@@ -1,0 +1,21 @@
+# Model folders
+**/model/
+
+# Serialized / weight files
+*.pkl
+*.bin
+*.pth
+*.ckpt
+*.safetensors
+
+# IDE config
+.idea/
+.vscode/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Training data (do NOT commit)
+day01/data/
+day02/data/
