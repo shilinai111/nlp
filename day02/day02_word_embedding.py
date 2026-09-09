@@ -38,5 +38,28 @@ def dm01_embedding_show():
     ]
     """
     print(f'分词结果:{word_list}')
+
+    #4.构建词汇表，进行文本数值化(词向量)
+    #4.1初始化词汇映射器
+    my_tokenizer = Tokenizer()
+    #4.2拟合训练数据，统计词频，并构建：词汇表
+    my_tokenizer.fit_on_texts(word_list)
+    #4.3查看词和索引的映射关系
+    print(f'词和索引的映射关系:{my_tokenizer.word_index}')
+    #4.4.获取去重后的所有词汇列表
+    my_token_list = my_tokenizer.word_index.values()
+    print(my_token_list)
+    #4.5.将分词后的文本->转成数字序列
+    seq2id = my_tokenizer.texts_to_sequences(word_list)
+    print(f"文本转成数字序列：:{seq2id}")
+    #5.创建词嵌入层，把文本（即：词对应的编号）转成词向量
+    #5.1创建词嵌入层对象
+    #参1:词汇表大小，即:唯一的词的个数
+    #参2:词向量的维度
+    embed = nn.Embedding(len(my_token_list), 8)
+    #5.2查看词嵌入层的权重参数（即：词向量）
+    print(f'embed:{embed.weight.data}')
+    print(f'embed.shape:{embed.weight.shape}')
+
 if __name__ == "__main__":
     dm01_embedding_show()
