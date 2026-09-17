@@ -1,6 +1,6 @@
 # Model folders
 **/model/
-
+**/runs/
 # Serialized / weight files
 *.pkl
 *.bin
